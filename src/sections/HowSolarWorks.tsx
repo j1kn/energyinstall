@@ -1,0 +1,229 @@
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Sun, Cpu, Home, BatteryCharging, ArrowRight, Zap } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const HowSolarWorks = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.process-title',
+        { y: 24, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.5, ease: 'power3.out',
+          scrollTrigger: { trigger: sectionRef.current, start: 'top 80%' }
+        }
+      );
+
+      // Animate the flow line
+      gsap.fromTo('.flow-line',
+        { strokeDashoffset: 1000 },
+        {
+          strokeDashoffset: 0, duration: 1.5, ease: 'power2.out',
+          scrollTrigger: { trigger: '.diagram-container', start: 'top 75%' }
+        }
+      );
+
+      // Animate nodes
+      gsap.fromTo('.process-node',
+        { scale: 0, opacity: 0 },
+        {
+          scale: 1, opacity: 1, duration: 0.4, stagger: 0.15, ease: 'back.out(1.7)',
+          scrollTrigger: { trigger: '.diagram-container', start: 'top 75%' }
+        }
+      );
+
+      // Animate labels
+      gsap.fromTo('.node-label',
+        { y: 10, opacity: 0 },
+        {
+          y: 0, opacity: 1, duration: 0.3, stagger: 0.15, delay: 0.3,
+          scrollTrigger: { trigger: '.diagram-container', start: 'top 75%' }
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  const steps = [
+    { icon: Sun, label: 'Sunlight', sublabel: 'Solar panels capture sunlight', color: '#f5c518' },
+    { icon: Cpu, label: 'Inverter', sublabel: 'Converts DC to AC power', color: '#f5c518' },
+    { icon: Home, label: 'Your Home', sublabel: 'Power your appliances', color: '#22c55e' },
+    { icon: BatteryCharging, label: 'Battery', sublabel: 'Store excess energy', color: '#3b82f6' },
+  ];
+
+  return (
+    <section id="how-it-works" ref={sectionRef} className="section-py bg-[#0a0a0a] overflow-hidden">
+      <div className="section-padding">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="eyebrow mb-3">The Process</div>
+          <h2 
+            className="process-title text-3xl sm:text-4xl lg:text-5xl font-medium text-white opacity-0"
+            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+          >
+            How Solar <span className="text-gradient">Works</span>
+          </h2>
+        </div>
+
+        {/* Visual Diagram */}
+        <div className="diagram-container relative max-w-5xl mx-auto">
+          {/* Desktop Horizontal Flow */}
+          <div className="hidden md:block">
+            {/* Connection Line SVG */}
+            <svg className="absolute top-16 left-0 w-full h-4" viewBox="0 0 1000 20" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#f5c518" stopOpacity="0.8" />
+                  <stop offset="50%" stopColor="#22c55e" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.8" />
+                </linearGradient>
+              </defs>
+              <path
+                className="flow-line"
+                d="M 50 10 L 950 10"
+                stroke="url(#lineGradient)"
+                strokeWidth="3"
+                strokeDasharray="1000"
+                strokeDashoffset="1000"
+                fill="none"
+                strokeLinecap="round"
+              />
+              {/* Animated energy dots */}
+              <circle r="4" fill="#f5c518">
+                <animate attributeName="cx" from="50" to="950" dur="3s" repeatCount="indefinite" />
+              </circle>
+              <circle r="4" fill="#f5c518">
+                <animate attributeName="cx" from="50" to="950" dur="3s" repeatCount="indefinite" begin="1s" />
+              </circle>
+            </svg>
+
+            {/* Nodes */}
+            <div className="flex justify-between items-start">
+              {steps.map((step, index) => {
+                const Icon = step.icon;
+                return (
+                  <div key={index} className="relative flex flex-col items-center" style={{ width: '22%' }}>
+                    {/* Node Circle */}
+                    <div 
+                      className="process-node relative w-32 h-32 rounded-full flex items-center justify-center opacity-0"
+                      style={{ 
+                        background: `radial-gradient(circle, ${step.color}20 0%, transparent 70%)`,
+                        border: `2px solid ${step.color}40`
+                      }}
+                    >
+                      <div 
+                        className="w-16 h-16 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: `${step.color}20` }}
+                      >
+                        <Icon className="w-8 h-8" style={{ color: step.color }} />
+                      </div>
+                      {/* Step number */}
+                      <div 
+                        className="absolute -top-1 -right-1 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+                        style={{ backgroundColor: step.color, color: '#0a0a0a' }}
+                      >
+                        {index + 1}
+                      </div>
+                    </div>
+
+                    {/* Label */}
+                    <div className="node-label mt-4 text-center opacity-0">
+                      <h3 
+                        className="text-lg font-medium text-white mb-1"
+                        style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                      >
+                        {step.label}
+                      </h3>
+                      <p className="text-sm text-[#a0a0a0]">{step.sublabel}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Mobile Vertical Flow */}
+          <div className="md:hidden">
+            <div className="relative flex flex-col items-center">
+              {/* Vertical Line */}
+              <div className="absolute left-8 top-8 bottom-8 w-0.5 bg-gradient-to-b from-[#f5c518] via-[#22c55e] to-[#3b82f6]">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#f5c518] rounded-full animate-pulse" />
+              </div>
+
+              {/* Nodes */}
+              <div className="space-y-8 w-full">
+                {steps.map((step, index) => {
+                  const Icon = step.icon;
+                  return (
+                    <div key={index} className="process-node flex items-center gap-6 opacity-0">
+                      {/* Node */}
+                      <div 
+                        className="relative w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ 
+                          background: `radial-gradient(circle, ${step.color}30 0%, transparent 70%)`,
+                          border: `2px solid ${step.color}50`
+                        }}
+                      >
+                        <Icon className="w-7 h-7" style={{ color: step.color }} />
+                        <div 
+                          className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold"
+                          style={{ backgroundColor: step.color, color: '#0a0a0a' }}
+                        >
+                          {index + 1}
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="node-label opacity-0">
+                        <h3 
+                          className="text-base font-medium text-white"
+                          style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                        >
+                          {step.label}
+                        </h3>
+                        <p className="text-sm text-[#a0a0a0]">{step.sublabel}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          {/* Savings Summary */}
+          <div className="mt-16 p-6 bg-[#141414] rounded-xl border border-[rgba(255,255,255,0.04)]">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-lg bg-[#f5c518]/10 flex items-center justify-center">
+                  <Zap className="w-6 h-6 text-[#f5c518]" />
+                </div>
+                <div>
+                  <h4 className="text-white font-medium" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>
+                    The Smart Export Guarantee
+                  </h4>
+                  <p className="text-sm text-[#a0a0a0]">
+                    Sell excess energy back to the grid and earn £80-170/year
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="btn-primary whitespace-nowrap"
+              >
+                Calculate Your Savings
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HowSolarWorks;
