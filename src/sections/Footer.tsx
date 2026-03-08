@@ -41,10 +41,10 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <a href="#" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="block mb-4">
-              <img 
-                src="/images/logo.png" 
-                alt="Energy Install" 
-                className="h-12 w-auto"
+              <img
+                src="/images/logo.png"
+                alt="Energy Install"
+                className="h-16 w-auto"
               />
             </a>
             <p className="text-xs text-[#a0a0a0] mb-4 leading-relaxed">

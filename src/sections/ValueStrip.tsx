@@ -8,7 +8,7 @@ const stats = [
   { value: 1200, prefix: '£', suffix: '+', label: 'Yearly Savings' },
   { value: 8, prefix: '', suffix: ' Years', label: 'Avg Payback' },
   { value: 25, prefix: '', suffix: '+', label: 'Years Lifespan' },
-  { value: 15000, prefix: '£', suffix: '', label: 'Max Grant' },
+  { value: 7500, prefix: '£', suffix: '+', label: 'Max Grant' },
   { value: 0, prefix: '', suffix: '% VAT', label: 'On Install' },
 ];
 
@@ -68,11 +68,11 @@ const ValueStrip = () => {
       <div className="section-padding">
         <div className="stats-container grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-0 opacity-0">
           {stats.map((stat, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`text-center ${index === 4 ? 'col-span-3 md:col-span-1' : ''} ${index > 2 ? 'hidden md:block' : ''}`}
             >
-              <div 
+              <div
                 className="text-xl sm:text-2xl font-semibold text-white mb-0.5"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >
@@ -81,10 +81,10 @@ const ValueStrip = () => {
               <div className="text-[10px] sm:text-xs text-[#a0a0a0]">{stat.label}</div>
             </div>
           ))}
-          
+
           {/* Mobile: Show VAT in center of last row */}
           <div className="col-span-3 md:hidden text-center">
-            <div 
+            <div
               className="text-xl font-semibold text-white mb-0.5"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >

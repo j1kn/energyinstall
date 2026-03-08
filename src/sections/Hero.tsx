@@ -42,12 +42,12 @@ const Hero = () => {
         { y: 60, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.2 }
       );
-      
+
       gsap.fromTo('.hero-subtitle',
         { y: 40, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.4 }
       );
-      
+
       gsap.fromTo('.hero-ctas',
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.6 }
@@ -108,11 +108,11 @@ const Hero = () => {
           {/* Badge */}
           <div className="hero-stats inline-flex items-center gap-2 px-4 py-2 bg-[#0a0a0a]/80 backdrop-blur-sm border border-[rgba(245,197,24,0.2)] rounded-full mb-8 opacity-0">
             <Zap className="w-4 h-4 text-[#f5c518]" />
-            <span className="text-xs text-white/80">MCS Certified Installers</span>
+            <span className="text-xs text-white/80">Premium Solar Installations</span>
           </div>
 
           {/* Headline */}
-          <h1 
+          <h1
             className="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-white mb-6 opacity-0"
             style={{ fontFamily: 'Space Grotesk, sans-serif', lineHeight: 1.05 }}
           >
@@ -123,8 +123,8 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p className="hero-subtitle text-base sm:text-lg text-white/70 max-w-xl mx-auto mb-10 opacity-0">
-            Premium solar installations for homes and businesses. 
-            Save up to <span className="text-white font-medium">78%</span> on energy bills with 
+            Premium solar installations for homes and businesses.
+            Save up to <span className="text-white font-medium">78%</span> on energy bills with
             our expert team.
           </p>
 

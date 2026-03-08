@@ -14,9 +14,9 @@ const contactInfo = [
 ];
 
 const trustBadges = [
-  { icon: Award, text: 'MCS Certified' },
-  { icon: Shield, text: 'NICEIC Approved' },
-  { icon: Star, text: 'Which? Trusted' },
+  { icon: Shield, text: 'Insured & Guaranteed' },
+  { icon: Award, text: 'Expert Installers' },
+  { icon: Star, text: '5-Star Service' },
 ];
 
 const Contact = () => {
@@ -82,14 +82,14 @@ const Contact = () => {
           {/* Left - Info */}
           <div className="contact-left opacity-0">
             <div className="eyebrow mb-3">Get In Touch</div>
-            <h2 
+            <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-4"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Ready to Go <span className="text-gradient">Solar?</span>
             </h2>
             <p className="text-[#a0a0a0] mb-8 leading-relaxed">
-              Get a free assessment and savings forecast. Our experts will design 
+              Get a free assessment and savings forecast. Our experts will design
               the perfect solar solution for your property.
             </p>
 
@@ -116,7 +116,7 @@ const Contact = () => {
               {trustBadges.map((badge, index) => {
                 const Icon = badge.icon;
                 return (
-                  <div 
+                  <div
                     key={index}
                     className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0a0a0a] rounded-md border border-[rgba(255,255,255,0.04)]"
                   >
@@ -131,7 +131,7 @@ const Contact = () => {
           {/* Right - Form */}
           <div className="contact-right opacity-0">
             <form onSubmit={handleSubmit} className="contact-form bg-[#0a0a0a] rounded-lg p-5 border border-[rgba(255,255,255,0.04)]">
-              <h3 
+              <h3
                 className="text-lg font-medium text-white mb-4"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >

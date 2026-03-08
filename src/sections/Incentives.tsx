@@ -1,34 +1,25 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Gift, Home, BatteryCharging, Percent, ArrowRight, CheckCircle2, Calculator } from 'lucide-react';
+import { Home, BatteryCharging, Percent, ArrowRight, CheckCircle2, Calculator } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const incentives = [
   {
-    icon: Gift,
-    amount: 'Up to 100%',
-    title: 'ECO4 Scheme',
-    description: 'Free solar panels for qualifying low-income households through the Energy Company Obligation.',
-    eligibility: 'Income-related benefits, EPC rating D-G',
-    highlight: 'Fully Funded',
-    color: '#22c55e',
-  },
-  {
     icon: Home,
-    amount: 'Up to £15,000',
+    amount: 'Up to £7,500',
     title: 'Warm Homes Grant',
-    description: 'Government grant covering energy efficiency improvements including solar installations.',
-    eligibility: 'Income under £36,000, EPC rating D-G',
-    highlight: 'Maximum Grant',
+    description: 'Government grant covering energy efficiency improvements including ASHP and AC units.',
+    eligibility: 'ASHP (Max £7,500), Air Conditioning (Up to £1,500)',
+    highlight: 'ASHP & AC Grant',
     color: '#f5c518',
   },
   {
     icon: BatteryCharging,
     amount: '£80-170/year',
-    title: 'Smart Export Guarantee',
-    description: 'Get paid for excess electricity you export back to the grid through your energy supplier.',
+    title: 'Smart Export Guarantee (SEG)',
+    description: 'Homeowners can earn money by exporting excess solar electricity back to the grid. Requires a smart meter.',
     eligibility: 'All solar system owners with smart meter',
     highlight: 'Ongoing Income',
     color: '#3b82f6',
@@ -37,7 +28,7 @@ const incentives = [
     icon: Percent,
     amount: '0% VAT',
     title: 'VAT Exemption',
-    description: 'Zero VAT on solar panels and batteries until March 2027 for residential installations.',
+    description: '0% VAT on solar panels and batteries until March 2027 for residential installations.',
     eligibility: 'All residential installations',
     highlight: 'Save ~£2,850',
     color: '#a855f7',
@@ -83,7 +74,7 @@ const Incentives = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <div className="eyebrow mb-3">Financial Support</div>
-          <h2 
+          <h2
             className="incentives-title text-3xl sm:text-4xl lg:text-5xl font-medium text-white opacity-0"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
           >
@@ -101,21 +92,21 @@ const Incentives = () => {
             {incentives.map((incentive, index) => {
               const Icon = incentive.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="incentive-card group relative bg-[#0a0a0a] rounded-xl p-5 border border-[rgba(255,255,255,0.04)] transition-all duration-300 hover:border-[rgba(245,197,24,0.2)] hover:translate-x-2 opacity-0"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                     {/* Icon & Amount */}
                     <div className="flex items-center gap-4 sm:w-48 flex-shrink-0">
-                      <div 
+                      <div
                         className="w-12 h-12 rounded-lg flex items-center justify-center"
                         style={{ backgroundColor: `${incentive.color}15` }}
                       >
                         <Icon className="w-6 h-6" style={{ color: incentive.color }} />
                       </div>
                       <div>
-                        <div 
+                        <div
                           className="text-xl font-semibold"
                           style={{ color: incentive.color, fontFamily: 'Space Grotesk, sans-serif' }}
                         >
@@ -130,7 +121,7 @@ const Incentives = () => {
 
                     {/* Content */}
                     <div className="flex-1">
-                      <h3 
+                      <h3
                         className="text-base font-medium text-white mb-1"
                         style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                       >
@@ -161,14 +152,14 @@ const Incentives = () => {
               <div className="w-14 h-14 rounded-lg bg-[#f5c518]/20 flex items-center justify-center mb-4">
                 <Calculator className="w-7 h-7 text-[#f5c518]" />
               </div>
-              
-              <h3 
+
+              <h3
                 className="text-xl font-medium text-white mb-3"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >
                 Calculate Your Savings
               </h3>
-              
+
               <p className="text-sm text-[#a0a0a0] mb-6">
                 Find out how much you could save with solar panels and which grants you qualify for.
               </p>

@@ -12,7 +12,7 @@ const services = [
     title: 'Domestic Solar',
     description: 'Efficient home solar systems that reduce bills and increase energy independence.',
     fullDescription: 'Our domestic solar solutions are designed to help homeowners reduce their energy bills while contributing to a greener future. We use only the highest quality panels and inverters, ensuring maximum efficiency and longevity. Our team handles everything from initial assessment to installation and ongoing maintenance, making the transition to solar energy seamless and hassle-free.',
-    features: ['4-8kW systems', 'Battery ready', 'MCS certified', '25-year warranty', 'Smart monitoring'],
+    features: ['4-8kW systems', 'Battery ready', 'High efficiency', '25-year warranty', 'Smart monitoring'],
     benefits: [
       'Reduce energy bills by up to 78%',
       'Increase property value',
@@ -149,7 +149,7 @@ const Services = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="eyebrow mb-3">Our Services</div>
-            <h2 
+            <h2
               className="services-title text-3xl sm:text-4xl lg:text-5xl font-medium text-white opacity-0"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
@@ -165,7 +165,7 @@ const Services = () => {
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <button 
+                <button
                   key={index}
                   onClick={() => openModal(service)}
                   className="service-card group relative bg-[#141414] rounded-lg overflow-hidden border border-[rgba(255,255,255,0.04)] transition-all duration-200 hover:border-[rgba(245,197,24,0.3)] hover:shadow-[0_0_30px_rgba(245,197,24,0.1)] text-left opacity-0"
@@ -178,7 +178,7 @@ const Services = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/60 to-transparent" />
-                    
+
                     {/* Icon */}
                     <div className="absolute bottom-3 left-4 w-10 h-10 bg-[#f5c518] rounded-md flex items-center justify-center text-[#0a0a0a]">
                       <Icon className="w-5 h-5" />
@@ -188,7 +188,7 @@ const Services = () => {
                   {/* Content */}
                   <div className="p-4">
                     <div className="flex items-start justify-between mb-2">
-                      <h3 
+                      <h3
                         className="text-lg font-medium text-white group-hover:text-[#f5c518] transition-colors"
                         style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                       >
@@ -196,7 +196,7 @@ const Services = () => {
                       </h3>
                       <ArrowUpRight className="w-4 h-4 text-[#a0a0a0] transition-all duration-200 group-hover:text-[#f5c518] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
-                    
+
                     <p className="text-sm text-[#a0a0a0] mb-3 leading-relaxed line-clamp-2">
                       {service.description}
                     </p>
@@ -204,7 +204,7 @@ const Services = () => {
                     {/* Features */}
                     <div className="flex flex-wrap gap-2">
                       {service.features.slice(0, 3).map((feature, i) => (
-                        <span 
+                        <span
                           key={i}
                           className="text-[10px] px-2 py-1 bg-[#0a0a0a] rounded text-[#a0a0a0]"
                         >

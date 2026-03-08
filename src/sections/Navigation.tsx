@@ -28,22 +28,21 @@ const Navigation = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-[#0a0a0a]/95 backdrop-blur-md py-3' : 'bg-transparent py-4'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#0a0a0a]/95 backdrop-blur-md py-3' : 'bg-transparent py-4'
+          }`}
       >
         <div className="section-padding">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a 
-              href="#" 
+            <a
+              href="#"
               className="flex items-center gap-3"
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
             >
-              <img 
-                src="/images/logo.png" 
-                alt="Energy Install" 
-                className="h-10 w-auto"
+              <img
+                src="/images/logo.png"
+                alt="Energy Install"
+                className="h-14 w-auto"
               />
             </a>
 
@@ -80,18 +79,17 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-[#0a0a0a]/98 backdrop-blur-lg transition-all duration-300 lg:hidden ${
-          isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-40 bg-[#0a0a0a]/98 backdrop-blur-lg transition-all duration-300 lg:hidden ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
+          }`}
       >
         <div className="flex flex-col items-center justify-center h-full gap-6 pt-16">
           {/* Logo in menu */}
-          <img 
-            src="/images/logo.png" 
-            alt="Energy Install" 
-            className="h-16 w-auto mb-4"
+          <img
+            src="/images/logo.png"
+            alt="Energy Install"
+            className="h-20 w-auto mb-4"
           />
-          
+
           {navLinks.map((link) => (
             <button
               key={link.label}

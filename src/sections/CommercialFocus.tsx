@@ -43,12 +43,12 @@ const CommercialFocus = () => {
         onEnter: () => {
           if (hasAnimated.current) return;
           hasAnimated.current = true;
-          
+
           gsap.to({ val: 0 }, {
             val: 7,
             duration: 0.8,
             ease: 'power2.out',
-            onUpdate: function() {
+            onUpdate: function () {
               setPayback(Math.round(this.targets()[0].val));
             }
           });
@@ -57,7 +57,7 @@ const CommercialFocus = () => {
             duration: 0.8,
             delay: 0.1,
             ease: 'power2.out',
-            onUpdate: function() {
+            onUpdate: function () {
               setSavings(Math.round(this.targets()[0].val));
             }
           });
@@ -78,16 +78,16 @@ const CommercialFocus = () => {
               <Building2 className="w-3 h-3" />
               For Business
             </div>
-            
-            <h2 
+
+            <h2
               className="text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-4"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Commercial <span className="text-gradient">Solar Solutions</span>
             </h2>
-            
+
             <p className="text-[#a0a0a0] mb-6 leading-relaxed">
-              Reduce operational costs, enhance your sustainability profile, and secure 
+              Reduce operational costs, enhance your sustainability profile, and secure
               energy independence for your organization with our tailored commercial installations.
             </p>
 
@@ -109,7 +109,7 @@ const CommercialFocus = () => {
             {/* Stats */}
             <div className="commercial-stats flex gap-6 mb-8">
               <div>
-                <div 
+                <div
                   className="text-3xl font-semibold text-white"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                 >
@@ -119,7 +119,7 @@ const CommercialFocus = () => {
               </div>
               <div className="w-px bg-[rgba(255,255,255,0.08)]" />
               <div>
-                <div 
+                <div
                   className="text-3xl font-semibold text-white"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                 >
@@ -149,7 +149,7 @@ const CommercialFocus = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/60 to-transparent" />
             </div>
-            
+
             {/* Floating Badge */}
             <div className="absolute -bottom-4 -left-4 bg-[#141414] border border-[rgba(255,255,255,0.06)] rounded-lg p-3 shadow-xl">
               <div className="flex items-center gap-2">
@@ -157,7 +157,7 @@ const CommercialFocus = () => {
                   <Shield className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-xs font-medium text-white">MCS Certified</div>
+                  <div className="text-xs font-medium text-white">Trustworthy Partner</div>
                   <div className="text-[10px] text-[#a0a0a0]">Commercial Installers</div>
                 </div>
               </div>
