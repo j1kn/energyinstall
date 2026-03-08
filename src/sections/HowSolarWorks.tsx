@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Sun, Cpu, Home, Zap, Smartphone, LineChart, ArrowRight } from 'lucide-react';
+import { Sun, Cpu, Home, Zap, LineChart, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
